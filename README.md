@@ -29,8 +29,11 @@ MemoryBot is designed to engage in meaningful conversations by remembering the h
 
 ## 🚀 Getting Started
    git clone https://github.com/majidhanif230/MemoryBot.git
+   
    cd MemoryBot
+   
    pip install -r requirements.txt
+   
    python app.py
 ## 🙏 Acknowledgements
    This project was developed by Majid Hanif. Special thanks to Machine Learning 1 Pvt Ltd, the developers of LangChain and Gradio for their powerful tools, and the open-source community for their contributions.
