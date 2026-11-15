@@ -1,39 +1,50 @@
-# 🤖 MemoryBot - Conversational AI Chatbot
+# MemoryBot
 
-Welcome to MemoryBot, an AI-powered conversational chatbot that uses Google's Gemini model to maintain and respond based on the context of previous interactions. This project leverages the capabilities of LangChain and Gradio to create an engaging and interactive chat experience.
+A conversational AI chatbot that remembers previous messages and replies in context, powered by Google's Gemini model (`gemini-pro`) with LangChain conversation memory and a Gradio chat interface.
 
-## 📝 Overview
+> Project developed by Majid Hanif, with thanks to Machine Learning 1 Pvt Ltd.
 
-MemoryBot is designed to engage in meaningful conversations by remembering the history of interactions and generating responses that are contextually relevant. Whether you want to chat, ask questions, or simply interact with an AI, MemoryBot provides a friendly and intelligent response every time.
+## Key features
 
-## 🚀 Features
+- Context-aware replies: `ConversationTokenBufferMemory` (max 1,000 tokens) keeps recent conversation history and drops the oldest tokens when the limit is reached
+- Google Gemini (`gemini-pro`, temperature 0.7) via LangChain's `ChatGoogleGenerativeAI`
+- Custom prompt template — the assistant is helpful, creative, clever, supportive and friendly
+- Gradio `Blocks` web interface with a message box, Submit and Clear buttons
 
-- **Conversational Memory**: The chatbot remembers past interactions to generate context-aware responses.
-- **Google's Gemini Model**: Utilizes Google's cutting-edge Gemini model for high-quality conversational abilities.
-- **Customizable Responses**: Adjust the model's temperature and prompt template for different conversation styles.
-- **Interactive Interface**: Built using Gradio for a user-friendly chat interface.
+## Tech stack
 
-## ⚙️ How It Works
+- Python, Jupyter Notebook
+- LangChain (`langchain`, `langchain-google-genai`)
+- Google Generative AI (`google-generativeai`, Gemini)
+- Gradio
 
-1. **Conversation History**: The bot maintains a history of all interactions using `ConversationTokenBufferMemory`, which allows it to remember and reference past conversations.
-2. **Prompt Template**: A customizable prompt template guides the AI to generate creative, clever, and friendly responses.
-3. **Response Generation**: The chatbot uses LangChain's `ConversationChain` to generate responses based on the user's input and conversation history.
-4. **User Interaction**: Users can type messages, and the bot processes these inputs to generate appropriate responses that are displayed in the chat interface.
+## How to run
 
-## 🛠️ Technologies Used
+```bash
+git clone https://github.com/majidhanif230/MemoryBot.git
+cd MemoryBot
+pip install -r requirements.txt.txt
+```
 
-- **Gradio**: For building the interactive chat interface.
-- **LangChain**: For managing the conversation flow and memory.
-- **Google Generative AI**: For the underlying AI model (Gemini).
-- **Python**: The primary programming language for this project.
+Then open `MemoryBot.ipynb` in Jupyter and run the cells. Set your Google API key in the model-setup cell first — the notebook contains a placeholder where the key goes. (The requirements file in this repo is named `requirements.txt.txt`.)
 
-## 🚀 Getting Started
-   git clone https://github.com/majidhanif230/MemoryBot.git
-   
-   cd MemoryBot
-   
-   pip install -r requirements.txt
-   
-   python app.py
-## 🙏 Acknowledgements
-   This project was developed by Majid Hanif. Special thanks to Machine Learning 1 Pvt Ltd, the developers of LangChain and Gradio for their powerful tools, and the open-source community for their contributions.
+There is no standalone `app.py` in this repo; the chatbot runs from the notebook, which launches the Gradio interface from its last cells.
+
+## Project structure
+
+```
+MemoryBot/
+├── README.md               # This file
+├── MemoryBot.ipynb         # The chatbot: setup, memory, prompt, chain, Gradio UI
+└── requirements.txt.txt    # gradio, langchain, google-generativeai, langchain-google-genai
+```
+
+How it works: user input goes through a LangChain `ConversationChain` built from the Gemini model, the token-buffer memory and the prompt template; the Gradio interface displays the reply and keeps the history for the next turn.
+
+## Author
+
+**Majid Hanif** — AI Engineer, BS Artificial Intelligence, The Islamia University of Bahawalpur (CGPA 3.81/4.0)
+
+- Portfolio: https://snap-portfolio-me.lovable.app/portfolio
+- LinkedIn: https://www.linkedin.com/in/majid-hanif-23720b2a2/
+- GitHub: https://github.com/majidhanif230
